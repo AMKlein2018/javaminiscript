@@ -21,6 +21,9 @@
 
 // console.log(Multiplier.getCurrentValue())
 
+
+
+
 // Code Challenge #2
 
 // Implement an object model that allows you to store strings that represent a Photo. 
@@ -71,7 +74,7 @@
 
 
 
-// ***************************WRONG CODE******************************
+// ***************************WRONG CODE for Code Challenge 2******************************
 
 		// function Album () {
 		  
@@ -121,6 +124,15 @@
 
 // ***************************WRONG CODE******************************
 
+	
+
+
+
+
+
+
+
+
 	// Code Challenge 3
 
 
@@ -142,31 +154,28 @@
 	allPersons = []
 	}
 
+	this.addTeacher = function(teacher) {
+		allPersons.push(teacher);
+	}
+
+	this.listTeachers = function () {
+		for(let i=0; i=allPersons.length; i++){
+			console.log(allPersons[i.name])
+		}
+	}
+
 	function Teachers (firstName, lastName, gender) {
  		this.firstName = firstName;
  		this.lastName = lastName;
  		this.gender = gender;
  	}
 
- 	function Students (firstName, lastName, gender) {
- 		this.firstName = firstName;
- 		this.lastName = lastName;
- 		this.gender = gender;
- 	}
-
-
-	this.addTeachers = function () {
-		for(let i=0; i=allPersons.length; i++){
-			console.log(allPersons[i.name])
-		}
-	}
-
-
-		//Teachers//
+ 	//Teachers//
 	var teachers1 = new Teachers ('Teachers Group')
- 		var person1 = new Person ('Steve', 'Rogers', 'Male')
-		var person2 = new Person ('Tony', 'Stark', 'Male')
+ 		var person1 = new Teachers ('Steve', 'Rogers', 'Male')
+		var person2 = new Teachers ('Tony', 'Stark', 'Male')
 
+	
 		Person.prototype.teacher1 = function () {
 			return ('Social Studies')
 		}
@@ -174,21 +183,58 @@
 			return ('Science')
 		}
 	
+	teachers1.addTeacher(person1);
+	teachers2.addTeacher(person2);
+	Person.listTeachers();
 
 
-		// Students//
+
+	// Students//
+	this.addStudent = function(student) {
+		allPersons.push(student);
+	}
+
+	this.listStudents = function () {
+		for(let i=0; i=allPersons.length; i++){
+			console.log(allPersons[i.name])
+		}
+	}
+
+	function Students (firstName, lastName, gender) {
+ 		this.firstName = firstName;
+ 		this.lastName = lastName;
+ 		this.gender = gender;
+ 	}
+
 	var students1 = new Students ('Student Group')
-		var person3 = new Person ('Vito', 'Corleone', 'Male')
-		var person4 = new Person ('Michael', 'Corleone', 'Male')
+		var person3 = new Students ('Vito', 'Corleone', 'Male')
+		var person4 = new Students ('Michael', 'Corleone', 'Male')
 
 		Person.prototype.student1 = function () {
 			return ('English')
-		
+		}
 		Person.prototype.student2 = function () {
 			return ('Science')
 
-		// }
+		}
 
+	students1.addStudent(person3);
+	students1.addStudent(person4);
+	Person.listStudents();
+ 	
+
+ 	
+	// function school.studentsName.teachersName () {
+	// // // 	return (this.firstName + " " + this.lastName + " " + this.gender)
+	// // // }
+
+		
+
+		
+
+
+
+	// ***********old code not being used**************
 	// this.teachersName = function () {
 	// 	return this.firstName + " " + this.lastName + " " + this.gender
  // 		}
@@ -201,9 +247,6 @@
 
 		
 
-	// // 	function school.studentsName.teachersName () {
-	// // 	return (this.firstName + " " + this.lastName + " " + this.gender)
-	// // }
 
 
 
