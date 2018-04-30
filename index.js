@@ -8,7 +8,7 @@
 // answer returned from multiply.
 
 // function Multiplier() {
-// num =1
+// num = 1
 
 // this.multiply = function(x){
 // num = x * num
@@ -19,7 +19,8 @@
 //  }
 // }
 
-// console.log(Multiplier.getCurrentValue())
+// var m = new Multiplier(4)
+
 
 
 
@@ -34,41 +35,45 @@
 // in  m, as strings. Create instances of each object defined to prove that your object model works.
 
 
-// function Album(name) {
-//   this.name = name;
-//   allPhotos = []
+// function Album() {
+//   this.allPhotos = [];
   
-//   this.addPhoto = function(pic) {
-//     allPhotos.push(pic);
+//   this.addPhoto = function(Pictures) {
+//     this.allPhotos.push(Pictures)
 //   }
 
 //   this.listPhotos = function() {
-//     for(let i=0; i<allPhotos.length;i++) {
-//       console.log(allPhotos[i].name);
+//     for(let i=0; i<this.allPhotos.length;i++) {
+//       console.log(this.allPhotos[i])
 //     }
 //   }
 
-//   this.accessPhoto = function(number) {
-//     console.log(allPhotos[number-1].name + ", " + allPhotos[number-1].location);
+//   this.accessPhoto = function() {
+//     console.log(this.allphotos[this.allPhotos.length -1])
 //   }
 // }
+
 
 // function Pictures(name, location) {
 //   this.name = name;
 //   this.location = location;
 // }
 
-// var album1 = new Pictures ('destinations');
-// 			var pic1 = new Pictures ('Ryan', 'San Francisco', 'Ball Park')
-// 			var pic2 = new Pictures ('Dave', 'New York', 'Museum')
-// 			var pic3 = new Pictures ('Nick', 'New York', 'Concert')
+// var album1 = new Album ();
 
-// album1.addPhoto(pic1);
-// album2.addPhoto(pic2);
-// album3.addPhoto(pic3);
+// var pic1 = new Pictures ('Ryan', 'San Francisco', 'Ball Park')
+// var pic2 = new Pictures ('Dave', 'New York', 'Museum')
+// var pic3 = new Pictures ('Nick', 'Philadelphia', 'Concert')
 
-// album.listPhotos();
-// album.accessPhoto(2);
+
+
+
+
+// album1.addPhoto(pic1)
+// album1.addPhoto(pic2)
+// album1.addPhoto(pic3)
+// console.log(album1.accessPhoto())
+
 
 
 
@@ -149,99 +154,131 @@
 
 
 	// Create a prototypical Person object
-	function Person (name) {
-	this.name = name;
-	allPersons = []
+	
+	function Person (firstName, lastName, age) {
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.age =  age;
+	this.fullname = function () {
+		return this.firstName + " " + this.lastName + " " + this.age
 	}
 
-	this.addTeacher = function(teacher) {
-		allPersons.push(teacher);
-	}
+}
 
-	this.listTeachers = function () {
-		for(let i=0; i=allPersons.length; i++){
-			console.log(allPersons[i.name])
-		}
-	}
-
-	function Teachers (firstName, lastName, gender) {
- 		this.firstName = firstName;
- 		this.lastName = lastName;
+	function Teacher (firstName, lastName, age, gender) {
+ 		Person.apply(this, arguments)
  		this.gender = gender;
  	}
 
- 	//Teachers//
-	var teachers1 = new Teachers ('Teachers Group')
- 		var person1 = new Teachers ('Steve', 'Rogers', 'Male')
-		var person2 = new Teachers ('Tony', 'Stark', 'Male')
+ 
 
-	
-		Person.prototype.teacher1 = function () {
-			return ('Social Studies')
-		}
-		Person.prototype.teacher2 = function () {
-			return ('Science')
-		}
-	
-	teachers1.addTeacher(person1);
-	teachers2.addTeacher(person2);
-	Person.listTeachers();
-
-
-
-	// Students//
-	this.addStudent = function(student) {
-		allPersons.push(student);
-	}
-
-	this.listStudents = function () {
-		for(let i=0; i=allPersons.length; i++){
-			console.log(allPersons[i.name])
-		}
-	}
-
-	function Students (firstName, lastName, gender) {
- 		this.firstName = firstName;
- 		this.lastName = lastName;
- 		this.gender = gender;
+	function Student (firstName, lastName, age, gender, grade) {
+ 		Person.apply (this, arguments);
+ 		this.grade = grade
  	}
 
-	var students1 = new Students ('Student Group')
-		var person3 = new Students ('Vito', 'Corleone', 'Male')
-		var person4 = new Students ('Michael', 'Corleone', 'Male')
+ 	// Teachers//
+ 		var person1 = new Teacher ('Steve', 'Rogers', 35, 'Male')
+		var person2 = new Teacher ('Tony', 'Stark', 45, 'Male')
 
-		Person.prototype.student1 = function () {
-			return ('English')
+	function School () {
+		this.teacherList = [];
+		this.studentList = [];
+
+		this.addTeachers = function (name) {
+			this.teacherList.push(name)
 		}
-		Person.prototype.student2 = function () {
-			return ('Science')
+
+		this.addStudents = function (name) {
+			this.studentList.push(name)
 
 		}
 
-	students1.addStudent(person3);
-	students1.addStudent(person4);
-	Person.listStudents();
- 	
+		this.listTeachers = function () {
+			for(let i=o; i < this.teacherList.length; i++) {
+				console.log (this.teacherList[i])
+			}
 
- 	
-	// function school.studentsName.teachersName () {
-	// // // 	return (this.firstName + " " + this.lastName + " " + this.gender)
-	// // // }
+		}
 
-		
+		this.listStudents = function () {
+			for(let i=0; i <this.studentList.length; i++) {
+				console.log (this.studentList[i])
+			}
+		}
+	}
 
+	var t1 = new Teacher("Chris", "Foster", "Philadelphia", "Literature")
+	var t2 = new Teacher("BJ", "Cantelupe", " San Diego", "Music")
+	var s1 = new Student("Steve", "Ng", "NYC", 15, "A")
+	var s2 = new Student("Adam", "Klein", "Philadelphia", 13, "B")
+	
+	var school1 = new School();
+	
+		school1.addTeachers(t2)
+		school1.addStudents(s1)
+		school1.addStudents(s2)
+
+	console.log(school1.listStudents())
+
+
+	
+
+ 
 		
 
 
 
-	// ***********old code not being used**************
-	// this.teachersName = function () {
-	// 	return this.firstName + " " + this.lastName + " " + this.gender
- // 		}
+	// // ***********old code not being used**************
 
-	// this.studentsName = function () {
-	// 	return this.firstName + " " + this.lastName + " " + this.gender
- // 		}
+	
+
+	
+	// 	Person.prototype.teacher1 = function () {
+	// 		return ('Social Studies')
+	// 	}
+	// 	Person.prototype.teacher2 = function () {
+	// 		return ('Science')
+	// 	}
+	
+	// teachers1.addTeacher(person1);
+	// teachers2.addTeacher(person2);
+	// Person.listTeachers();
+
+
+	// students1.addStudent(person3);
+	// // students1.addStudent(person4);
+	// // Person.listStudents();
+ 	
+
+ 	
+	// // function school.studentsName.teachersName () {
+	// // // // 	return (this.firstName + " " + this.lastName + " " + this.gender)
+	// // // // }
+
+
+
+	// // Students//
+	// this.addStudent = function(student) {
+	// 	allPersons.push(student);
+	// }
+
+	// this.listStudents = function () {
+	// 	for(let i=0; i=allPersons.length; i++){
+	// 		console.log(allPersons[i.name])
+	// 	}
+	// }
+
+
+
+
+	// // this.teachersName = function () {
+	// // 	return this.firstName + " " + this.lastName + " " + this.gender
+ // // 		}
+
+	// // this.studentsName = function () {
+	// // 	return this.firstName + " " + this.lastName + " " + this.gender
+ // // 		}
 		
 		
 
